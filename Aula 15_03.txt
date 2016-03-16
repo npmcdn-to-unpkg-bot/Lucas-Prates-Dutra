@@ -1,0 +1,3 @@
+Caio,
+
+Consigo fazer a chamada do LayoutManager pelo ControlManager, mas não consigo chamar no LayoutManager o outro arquivo em javascript que chama a página html.
