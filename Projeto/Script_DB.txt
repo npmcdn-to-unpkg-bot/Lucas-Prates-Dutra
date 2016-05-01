@@ -1,0 +1,102 @@
+CREATE SCHEMA IF NOT EXISTS `projeto` DEFAULT CHARACTER SET utf8 ;
+USE `projeto` ;
+
+-- -----------------------------------------------------
+-- Table `projeto`.`user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `projeto`.`user` (
+  `cod` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `last_name` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `phone_number` VARCHAR(45) NOT NULL,
+  `birth_date` DATE NOT NULL,
+  `passwd` TEXT(4000) NOT NULL,
+  PRIMARY KEY (`cod`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `projeto`.`certified`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `projeto`.`certified` (
+  `cod` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(45) NOT NULL,
+  `level` VARCHAR(45) NOT NULL,
+  `area` VARCHAR(45) NOT NULL,
+  `requirements` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`cod`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `projeto`.`topic`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `projeto`.`topic` (
+  `cod` INT NOT NULL AUTO_INCREMENT,
+  `info` VARCHAR(45) NOT NULL,
+  `qtd_questions` INT NOT NULL,
+  `best_score` INT NOT NULL,
+  `last_score` INT NOT NULL,
+  `time` TIME NOT NULL,
+  `cod_certified` INT NOT NULL,
+  PRIMARY KEY (`cod`),
+  INDEX `fk_topic_certified_idx` (`cod_certified` ASC),
+  CONSTRAINT `fk_topic_certified`
+    FOREIGN KEY (`cod_certified`)
+    REFERENCES `projeto`.`certified` (`cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `projeto`.`type_question`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `projeto`.`type_question` (
+  `cod` INT NOT NULL AUTO_INCREMENT,
+  `type` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`cod`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `projeto`.`questions`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `projeto`.`questions` (
+  `cod` INT NOT NULL AUTO_INCREMENT,
+  `enunciation` VARCHAR(45) NOT NULL,
+  `topic_cod` INT NOT NULL,
+  `cod_type_question` INT NOT NULL,
+  PRIMARY KEY (`cod`),
+  INDEX `fk_questions_topic1_idx` (`topic_cod` ASC),
+  INDEX `fk_questions_type_question1_idx` (`cod_type_question` ASC),
+  CONSTRAINT `fk_questions_topic1`
+    FOREIGN KEY (`topic_cod`)
+    REFERENCES `projeto`.`topic` (`cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_questions_type_question1`
+    FOREIGN KEY (`cod_type_question`)
+    REFERENCES `projeto`.`type_question` (`cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `projeto`.`alternatives`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `projeto`.`alternatives` (
+  `cod` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(45) NOT NULL,
+  `cod_questions` INT NOT NULL,
+  PRIMARY KEY (`cod`),
+  INDEX `fk_alternatives_questions1_idx` (`cod_questions` ASC),
+  CONSTRAINT `fk_alternatives_questions1`
+    FOREIGN KEY (`cod_questions`)
+    REFERENCES `projeto`.`questions` (`cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
