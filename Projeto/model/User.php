@@ -4,16 +4,16 @@
 class User
 {
     //private $id;
-    private $name;
+    private $first_name;
     private $last_name;
     private $email;
     private $phone_number;
     private $birth_date;
     private $password;
 
-    public function __construct($name, $last_name, $email, $phone_number, $birth_date, $passwd)
+    public function __construct($first_name, $last_name, $email, $phone_number, $birth_date, $passwd)
     {
-        $this->setName($name);
+        $this->setFirstName($first_name);
         $this->setLastName($last_name);
         $this->setEmail($email);
         $this->setPhoneNumber($phone_number);
@@ -22,9 +22,9 @@ class User
     }
 
 
-    public function setName($name)
+    public function setFirstName($first_name)
     {
-        $this->name = $name;
+        $this->first_name = $first_name;
     }
 
     public function setLastName($last_name)
@@ -52,9 +52,9 @@ class User
         $this->password = $password;
     }
 
-    public function getName()
+    public function getFirstName()
     {
-        return $this->name;
+        return $this->first_name;
     }
 
     public function getLastName()

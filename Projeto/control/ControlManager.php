@@ -28,9 +28,8 @@ class ControlManager
 
     public function route_method($request)
     {
-        //var_dump($request->get_method());
         switch($request->get_method()){
-            case "GET":
+            case "GET": $this->resourceController->searchResource($request);
                 break;
             case "POST": $this->resourceController->createResource($request);
                 break;

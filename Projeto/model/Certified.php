@@ -4,24 +4,24 @@
 class Certified
 {
     //private $id;
-    private $name;
+    private $tittle;
     private $description;
-    private $level; //search for a better alias
+    private $difficult; //search for a better alias
     private $area;
     private $requirements;
 
-    public function __construct($name, $info, $lvl, $area, $requirements)
+    public function __construct($tittle, $info, $difficult, $area, $requirements)
     {
-        $this->setName($name);
+        $this->setName($tittle);
         $this->setDescription($info);
-        $this->setLevel($lvl);
+        $this->setLevel($difficult);
         $this->setArea($area);
         $this->setRequirements($requirements);
     }
 
-    public function setName($name)
+    public function setTittle($tittle)
     {
-        $this->name = $name;
+        $this->tittle = $tittle;
     }
 
     public function setDescription($description)
@@ -29,9 +29,9 @@ class Certified
         $this->description = $description;
     }
 
-    public function setLevel($level)
+    public function setDifficult($difficult)
     {
-        $this->level = $level;
+        $this->difficult = $difficult;
     }
 
     public function setArea($area)
@@ -44,9 +44,9 @@ class Certified
         $this->requirements = $requirements;
     }
 
-    public function getName()
+    public function getTittle()
     {
-        return $this->name;
+        return $this->tittle;
     }
 
     public function getDescription()
@@ -54,9 +54,9 @@ class Certified
         return $this->description;
     }
 
-    public function getLevel()
+    public function getDifficult()
     {
-        return $this->level;
+        return $this->difficult;
     }
 
     public function getArea()

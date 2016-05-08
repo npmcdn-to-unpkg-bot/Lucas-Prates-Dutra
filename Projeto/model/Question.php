@@ -8,10 +8,10 @@ class Question
     private $type_question;
     private $alternatives; //See more about this part, maybe its can be a entity (object)
 
-    public function __construct($enunciation, $type, $alternatives)
+    public function __construct($enunciation, $type_question, $alternatives)
     {
         $this->setEnunciation($enunciation);
-        $this->setTypeQuestion($type);
+        $this->setTypeQuestion($type_question);
         $this->setAlternatives($alternatives);
     }
 

@@ -2,27 +2,26 @@
 
 class Topic
 {
-    //private $id;
-    private $name;
+    private $tittle;
     private $info; //Its a short description about the topic;
     private $qtd_questions;
     private $best_score;
     private $last_score;
-    private $time;
+    private $test_test_time;
 
-    public function __construct($name, $info, $qtd_questions, $best_score, $last_score, $time)
+    public function __construct($tittle, $info, $qtd_questions, $best_score, $last_score, $test_time)
     {
-        $this->setName($name);
+        $this->setTittle($tittle);
         $this->setInfo($info);
         $this->setQtdquestions($qtd_questions);
         $this->setBestScore($best_score);
         $this->setLastScore($last_score);
-        $this->setTime($time);
+        $this->setTestTime($test_time);
     }
 
-    public function setName($name)
+    public function setTittle($tittle)
     {
-        $this->name = $name;
+        $this->tittle = $tittle;
     }
 
     public function setInfo($info)
@@ -45,14 +44,14 @@ class Topic
         $this->last_score = $last_score;
     }
 
-    public function setTime($time)
+    public function setTestTime($test_time)
     {
-        $this->time = $time;
+        $this->test_time = $test_time;
     }
 
-    public function getName()
+    public function getTittle()
     {
-        return $this->name;
+        return $this->tittle;
     }
 
     public function getInfo()
@@ -75,9 +74,9 @@ class Topic
         return $this->last_score;
     }
 
-    public function getTime()
+    public function getTestTime()
     {
-        return $this->time;
+        return $this->test_time;
     }
 
 }
