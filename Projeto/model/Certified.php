@@ -12,9 +12,9 @@ class Certified
 
     public function __construct($tittle, $info, $difficult, $area, $requirements)
     {
-        $this->setName($tittle);
+        $this->setTittle($tittle);
         $this->setDescription($info);
-        $this->setLevel($difficult);
+        $this->setDifficult($difficult);
         $this->setArea($area);
         $this->setRequirements($requirements);
     }

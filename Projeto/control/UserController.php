@@ -6,21 +6,31 @@ include_once "database/DbConnector.php";
 
 class UserController
 {
+    private $requiredParameters = array('first_name', 'last_name', 'email', 'phone_number', 'birth_date', 'passwd');
+
     public function register($request)
     {
+
         $params = $request->get_params();
-        $user = new User($params["first_name"],
-            $params["last_name"],
-            $params["email"],
-            $params["phone_number"],
-            $params["birth_date"],
-            $params["password"]);
+        if ($this->isValid($params)) {
+            $user = new User($params["first_name"],
+                $params["last_name"],
+                $params["email"],
+                $params["phone_number"],
+                $params["birth_date"],
+                $params["passwd"]);
 
-        $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
+            $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
 
-        $conn = $db->getConnection();
 
-        return $conn->query($this->generateInsertQuery($user));
+            $conn = $db->getConnection();
+
+            return $conn->query($this->generateInsertQuery($user));
+        } else {
+            echo "Erro 400: Bad Request";
+        }
+
+
     }
 
     private function generateInsertQuery($user)
@@ -46,7 +56,11 @@ class UserController
 
         $conn = $db->getConnection();
 
+        var_dump($conn);
+        die;
+
         $result = $conn->query("SELECT first_name, last_name, email, phone_number, birth_date FROM user WHERE " . $crit);
+
 
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -54,13 +68,59 @@ class UserController
     private function generateCriteria($params)
     {
         $criteria = "";
-        foreach ($params as $key => $value)
-        {
+        foreach ($params as $key => $value) {
             $criteria = $criteria . $key . " LIKE '%" . $value . "%' OR ";
         }
 
-        return substr($criteria,0, -4);
+        return substr($criteria, 0, -4);
     }
 
+    public function update($request)
+    {
+        $params = $request->get_params();
+
+        //var_dump($params);
+
+        //$crit = $this->generateCriteriaUpdate($params);
+
+        $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
+
+        $conn = $db->getConnection();
+
+        //Falha: o email não poderá ser trocado
+        foreach ($params as $key => $value) {
+            $result = $conn->query("UPDATE user SET " . $key . " = " . $value . " WHERE email = " . $params["email"]);
+        }
+
+        return $result;
+    }
+
+    public function delete($request)
+    {
+        $params = $request->get_params();
+
+
+        $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
+
+        $conn = $db->getConnection();
+
+
+        $result = $conn->query("DELETE FROM user WHERE email = " . $params["email"]);
+
+        return $result;
+    }
+
+    private function isValid($parameters)
+    {
+        $keys = array_keys($parameters);
+        $diff1 = array_diff($keys, $this->requiredParameters);
+        $diff2 = array_diff($this->requiredParameters, $keys);
+
+        if (empty($diff2) && empty($diff1))
+            return true;
+
+        return false;
+
+    }
 
 }

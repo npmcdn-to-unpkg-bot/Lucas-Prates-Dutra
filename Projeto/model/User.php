@@ -11,18 +11,18 @@ class User
     private $birth_date;
     private $password;
 
-    public function __construct($first_name, $last_name, $email, $phone_number, $birth_date, $passwd)
+    public function __construct($first_name, $last_name, $email, $phone_number, $birth_date, $password)
     {
-        $this->setFirstName($first_name);
-        $this->setLastName($last_name);
-        $this->setEmail($email);
-        $this->setPhoneNumber($phone_number);
-        $this->setBirthDate($birth_date);
-        $this->setPassword($passwd);
+        $this->first_name = $first_name;
+        $this->last_name = $last_name;
+        $this->email = $email;
+        $this->phone_number = $phone_number;
+        $this->birth_date = $birth_date;
+        $this->password = $password;
     }
 
 
-    public function setFirstName($first_name)
+    /*public function setFirstName($first_name)
     {
         $this->first_name = $first_name;
     }
@@ -51,7 +51,7 @@ class User
     {
         $this->password = $password;
     }
-
+    */
     public function getFirstName()
     {
         return $this->first_name;
