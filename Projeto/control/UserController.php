@@ -25,6 +25,7 @@ class UserController
 
             $conn = $db->getConnection();
 
+
             return $conn->query($this->generateInsertQuery($user));
         } else {
             echo "Erro 400: Bad Request";
@@ -56,11 +57,7 @@ class UserController
 
         $conn = $db->getConnection();
 
-        var_dump($conn);
-        die;
-
         $result = $conn->query("SELECT first_name, last_name, email, phone_number, birth_date FROM user WHERE " . $crit);
-
 
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -79,17 +76,12 @@ class UserController
     {
         $params = $request->get_params();
 
-        //var_dump($params);
-
-        //$crit = $this->generateCriteriaUpdate($params);
-
         $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
 
         $conn = $db->getConnection();
 
-        //Falha: o email não poderá ser trocado
         foreach ($params as $key => $value) {
-            $result = $conn->query("UPDATE user SET " . $key . " = " . $value . " WHERE email = " . $params["email"]);
+            $result = $conn->query("UPDATE user SET " . $key . " =  '" . $value . "' WHERE email = '" . $params["email"] . "'");
         }
 
         return $result;
@@ -99,13 +91,11 @@ class UserController
     {
         $params = $request->get_params();
 
-
         $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
 
         $conn = $db->getConnection();
 
-
-        $result = $conn->query("DELETE FROM user WHERE email = " . $params["email"]);
+        $result = $conn->query("DELETE FROM user WHERE email = '" . $params["email"] . "'");
 
         return $result;
     }
@@ -117,9 +107,8 @@ class UserController
         $diff2 = array_diff($this->requiredParameters, $keys);
 
         if (empty($diff2) && empty($diff1))
-            return true;
 
-        return false;
+            return false;
 
     }
 

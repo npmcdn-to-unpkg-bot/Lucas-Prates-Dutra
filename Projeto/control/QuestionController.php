@@ -72,7 +72,7 @@ class QuestionController
 
         //Falha: o email não poderá ser trocado
         foreach ($params as $key => $value) {
-            $result = $conn->query("UPDATE question SET " . $key . " = " . $value . " WHERE enunciation = " . $params["enunciation"]);
+            $result = $conn->query("UPDATE question SET " . $key . " = " . $value . " WHERE enunciation = '" . $params["enunciation"] . "'");
         }
 
         return $result;
@@ -88,7 +88,7 @@ class QuestionController
         $conn = $db->getConnection();
 
 
-        $result = $conn->query("DELETE FROM question WHERE en = " . $params["enunciation"]);
+        $result = $conn->query("DELETE FROM question WHERE enunciation = '" . $params["enunciation"] . "'");
 
         return $result;
     }

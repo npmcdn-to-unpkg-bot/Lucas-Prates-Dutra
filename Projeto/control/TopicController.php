@@ -71,17 +71,12 @@ class TopicController
     {
         $params = $request->get_params();
 
-        //var_dump($params);
-
-        //$crit = $this->generateCriteriaUpdate($params);
-
         $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
 
         $conn = $db->getConnection();
 
-        //Falha: o email não poderá ser trocado
         foreach ($params as $key => $value) {
-            $result = $conn->query("UPDATE topic SET " . $key . " = " . $value . " WHERE tittle = " . $params["tittle"]);
+            $result = $conn->query("UPDATE topic SET " . $key . " = " . $value . " WHERE tittle = '" . $params["tittle"] . "'");
         }
 
         return $result;
@@ -97,7 +92,7 @@ class TopicController
         $conn = $db->getConnection();
 
 
-        $result = $conn->query("DELETE FROM topic WHERE tittle = " . $params["tittle"]);
+        $result = $conn->query("DELETE FROM topic WHERE tittle = '" . $params["tittle"] . "'");
 
         return $result;
     }

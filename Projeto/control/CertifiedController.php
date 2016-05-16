@@ -77,7 +77,7 @@ class CertifiedController
 
         //Falha: o email não poderá ser trocado
         foreach ($params as $key => $value) {
-            $result = $conn->query("UPDATE user SET " . $key . " = " . $value . " WHERE tittle = " . $params["tittle"]);
+            $result = $conn->query("UPDATE user SET " . $key . " = " . $value . " WHERE tittle = '" . $params["tittle"] . "'");
         }
 
         return $result;
@@ -93,7 +93,7 @@ class CertifiedController
         $conn = $db->getConnection();
 
 
-        $result = $conn->query("DELETE FROM user WHERE tittle = " . $params["tittle"]);
+        $result = $conn->query("DELETE FROM user WHERE tittle = '" . $params["tittle"] . "'");
 
         return $result;
     }
