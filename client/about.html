@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>About Us</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Training Center
+                </a>
+            </li>
+            <li>
+                <a href="myaccount.html">My Account</a>
+            </li>
+            <li>
+                <a href="home.html">Certifieds</a>
+            </li>
+            <li>
+                <a href="about.html">About</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div id="page-content-wrapper">
+            <div class="container">
+
+                <!-- Page Header -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">About us (in construction)
+                            <small></small>
+                        </h1>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <!-- Projects Row -->
+			<div class="about-content">
+        
+        <h2>Objective</h2>
+
+        <p>
+            Our goal is to propose a form of training, 
+			where students for certification have a safe and reliable source of questions to train.
+        </p>
+
+
+        <h2>Contact Me</h2>
+
+        <div id="formResponse" class="hidden">
+            <div class="alert alert-danger" id="formAlert">
+
+            </div>
+        </div>
+        <!-- /#fromResponse -->
+
+        <form action="/about/contact" method="POST" id="contactForm" class="relative">
+            <input type="hidden" name="_token" value="2lDaFScmto1zHu6zySeWeXwmW3HAkeL3t8HfhdWi">
+
+            <div class="form-group with-icon">
+                <i class="fa fa-user"></i>
+                <input type="text" placeholder="Name" id="name" name="name" class="form-control">
+            </div>
+
+            <div class="form-group with-icon">
+                <i class="fa fa-envelope"></i>
+                <input type="email" placeholder="Email" id="email" name="email" class="form-control">
+            </div>
+
+            <div class="form-group with-icon">
+                <i class="fa fa-asterisk"></i>
+                <input type="text" placeholder="Subject" id="subject" name="subject" class="form-control">
+            </div>
+
+            <div class="form-group with-icon">
+                <i class="fa fa-file-text"></i>
+                <textarea name="message" id="message" class="form-control" placeholder="Message" style="min-height: 200px;"></textarea>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <div class="g-recaptcha" data-sitekey="6LdNAwwTAAAAAAYZ84EzZkfKP7ET-xEIFZndorT8"></div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group clearfix">
+                        <button type="submit"
+                                
+                                id="sendBtn">Send
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay-b">
+                <i class="fa fa-spin fa-refresh"></i>
+            </div>
+        </form>
+
+    </div>
+    <!-- /.about-content -->
+</div>	
+			
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+</body>
+
+</html>
