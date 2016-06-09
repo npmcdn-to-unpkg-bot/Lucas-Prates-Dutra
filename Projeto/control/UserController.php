@@ -12,7 +12,7 @@ class UserController
     {
 
         $params = $request->get_params();
-        if ($this->isValid($params)) {
+        //if ($this->isValid($params)) {
             $user = new User($params["first_name"],
                 $params["last_name"],
                 $params["email"],
@@ -27,9 +27,9 @@ class UserController
 
 
             return $conn->query($this->generateInsertQuery($user));
-        } else {
-            echo "Erro 400: Bad Request";
-        }
+        //} else {
+        //    echo "Erro 400: Bad Request";
+        //}
 
 
     }

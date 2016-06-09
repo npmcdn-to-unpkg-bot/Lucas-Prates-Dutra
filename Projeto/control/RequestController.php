@@ -22,6 +22,7 @@ class RequestController
 
         $explode_params = explode("&", $replace);
 
+
         $params_map = array();
 
         foreach ($explode_params as $value) {

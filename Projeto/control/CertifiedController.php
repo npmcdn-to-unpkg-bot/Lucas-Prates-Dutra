@@ -11,7 +11,7 @@ class CertifiedController
     public function register($request)
     {
         $params = $request->get_params();
-        if ($this->isValid($params)) {
+        //if ($this->isValid($params)) {
             $certified = new Certified($params["tittle"],
                 $params["description"],
                 $params["difficult"],
@@ -23,8 +23,8 @@ class CertifiedController
             $conn = $db->getConnection();
 
             return $conn->query($this->generateInsertQuery($certified));
-        } else
-            echo "Error 400: Bad Request";
+        //} else
+          //  echo "Error 400: Bad Request";
     }
 
     private function generateInsertQuery($certified)
@@ -67,17 +67,12 @@ class CertifiedController
     {
         $params = $request->get_params();
 
-        //var_dump($params);
-
-        //$crit = $this->generateCriteriaUpdate($params);
-
         $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
 
         $conn = $db->getConnection();
 
-        //Falha: o email não poderá ser trocado
         foreach ($params as $key => $value) {
-            $result = $conn->query("UPDATE user SET " . $key . " = " . $value . " WHERE tittle = '" . $params["tittle"] . "'");
+            $result = $conn->query("UPDATE certified SET " . $key . " = '" . $value . "'  WHERE tittle = '" . $params["tittle"] . "'");
         }
 
         return $result;
@@ -93,7 +88,7 @@ class CertifiedController
         $conn = $db->getConnection();
 
 
-        $result = $conn->query("DELETE FROM user WHERE tittle = '" . $params["tittle"] . "'");
+        $result = $conn->query("DELETE FROM certified WHERE tittle = '" . $params["tittle"] . "'");
 
         return $result;
     }

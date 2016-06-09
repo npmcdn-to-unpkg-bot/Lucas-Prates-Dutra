@@ -9,7 +9,7 @@ class QuestionController
     public function register($request)
     {
         $params = $request->get_params();
-        if ($this->isValid($params)) {
+        //if ($this->isValid($params)) {
             $question = new question($params["enunciation"],
                 $params["type_question"],
                 $params["alternatives"]);
@@ -19,8 +19,8 @@ class QuestionController
             $conn = $db->getConnection();
 
             return $conn->query($this->generateInsertQuery($question));
-        } else
-            echo "Error 400: Bad Request";
+     //   } else
+       //     echo "Error 400: Bad Request";
     }
 
     private function generateInsertQuery($question)
@@ -72,7 +72,7 @@ class QuestionController
 
         //Falha: o email não poderá ser trocado
         foreach ($params as $key => $value) {
-            $result = $conn->query("UPDATE question SET " . $key . " = " . $value . " WHERE enunciation = '" . $params["enunciation"] . "'");
+            $result = $conn->query("UPDATE question SET " . $key . " = '" . $value . "' WHERE enunciation = '" . $params["enunciation"] . "'");
         }
 
         return $result;

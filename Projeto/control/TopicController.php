@@ -11,7 +11,7 @@ class TopicController
     public function register($request)
     {
         $params = $request->get_params();
-        if ($this->isValid($params)) {
+        //if ($this->isValid($params)) {
             $topic = new Topic($params["tittle"],
                 $params["info"],
                 $params["qtd_questions"],
@@ -24,8 +24,8 @@ class TopicController
             $conn = $db->getConnection();
 
             return $conn->query($this->generateInsertQuery($topic));
-        } else
-            echo "Error 400: Bad Request";
+        //} else
+         //   echo "Error 400: Bad Request";
     }
 
     private function generateInsertQuery($topic)
@@ -76,7 +76,7 @@ class TopicController
         $conn = $db->getConnection();
 
         foreach ($params as $key => $value) {
-            $result = $conn->query("UPDATE topic SET " . $key . " = " . $value . " WHERE tittle = '" . $params["tittle"] . "'");
+            $result = $conn->query("UPDATE topic SET " . $key . " = '" . $value . "' WHERE tittle = '" . $params["tittle"] . "'");
         }
 
         return $result;
