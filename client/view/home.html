@@ -1,0 +1,57 @@
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Training Center
+                </a>
+            </li>
+            <li>
+                <a href="#/my_account">My Account</a>
+            </li>
+            <li>
+                <a href="#/home">Certifieds</a>
+            </li>
+            <li>
+                <a href="about.html">About</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Certifieds
+                    <small>Select the certification you wish to study</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row  -->
+        <!-- Projects Row  -->
+        <input type="text" class="form-control" ng-model="criterioDeBusca" placeholder="O que você quer estudar hoje?">
+        <div  class="row">
+            <div  ng-repeat="certified in certifieds | filter:{tittle: criterioDeBusca}" class="col-md-4 portfolio-item">
+                <a href="topic.html">
+                    
+                </a>
+                <h3>
+                    <a href="topic.html">
+                    <img src="{{certified.img}}">{{certified.tittle}}</a>
+                
+                    
+                    <p>{{certified.difficult}}
+                </h3>
+                <p>{{certified.description}}</p>
+                <p>Requisitos: {{certified.requirements}}</p>
+            </div>
+        </div>
+        <!-- /.row -->
+            <!-- </div>
+        </div> -->
+    </div>
+    <!-- /#page-content-wrapper -->
+</div>

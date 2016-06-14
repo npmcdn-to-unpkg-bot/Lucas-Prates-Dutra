@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html ng-app="trainingCenter">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Topics</title>
+
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="angular/angular.js"></script>
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+
+    <script>
+        angular.module("trainingCenter", []);
+        angular.module("trainingCenter").controller("topicCtrl", function ($scope, $http){
+            $scope.app = "Training Center";
+
+            $http({
+                method : "GET",
+                url : "http://localhost/Projetos/Request/topic/?tittle="
+            }).then( function mySuccess(response){
+                $scope.topics = response.data;
+            }, function myError(response){
+                $scope.topics = response.statusText; 
+            })
+            
+        })
+    </script>
+
+</head>
+
+<body ng-controller="topicCtrl">
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Training Center
+                </a>
+            </li>
+            <li>
+                <a href="myaccount.html">My Account</a>
+            </li>
+            <li>
+                <a href="home.html">Certifieds</a>
+            </li>
+            <li>
+                <a href="about.html">About</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    
+
+    <div id="page-content-wrapper">
+	<div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Topics of ITIL v3 Foudantion
+                <small>Select the topic you wish to study</small>
+            </h1>
+        </div>
+    </div>
+    <input type="text" class="form-control" ng-model="criterioDeBusca" placeholder="Qual tópico deseja estudar hoje?">
+        <div ng-repeat="topic in topics | filter:{tittle: criterioDeBusca}" class="row">
+            <div class="col-sm-3">
+                <div class="well">
+                    <h3>{{topic.tittle}}</h3>
+                    <p>Number of Questions: {{topic.qtd_questions}}</p>
+                    <p>Last Score: {{topic.last_score}}</p>
+                    <p>Best Score: {{topic.best_score}}</p>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="well">
+                    <p>{{topic.info}}.</p>
+                </div>
+				<button><a href="questions.html">Train</a></button>
+            </div>
+			
+        </div>
+    </div>
+
+</div>
+<!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+
+</body>
+
+</html>

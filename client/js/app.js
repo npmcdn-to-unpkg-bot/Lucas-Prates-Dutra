@@ -1,1 +1,1 @@
-angular.module("trainingCenter", []);
+angular.module("trainingCenter", ["ngRoute"]);
