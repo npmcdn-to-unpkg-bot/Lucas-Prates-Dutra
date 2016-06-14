@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>My Account</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="bootstrap/css/simple-sidebar.css" rel="stylesheet">
+    <link href="bootstrap/css/myaccount.css" rel="stylesheet">
+    <link href="bootstrap/css/line-icons.css" rel="stylesheet">
+    <link href="bootstrap/css/animated.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Training Center
+                </a>
+            </li>
+            <li>
+                <a href="myaccount.html">My Account</a>
+            </li>
+            <li>
+                <a href="home.html">Certifieds</a>
+            </li>
+            <li>
+                <a href="about.html">About</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+	<div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Manage your Security Settings
+                <small>Update your informations.</small>
+            </h1>
+        </div>
+    </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-9">
+                    <form class="sky-form" id="sky-form4" action="#">
+                        <dl class="dl-horizontal">
+                            <dt>First Name</dt>
+                            <dd>
+                                <section>
+                                    <label class="input">
+                                        <i class="icon-append fa fa-user"></i>
+                                        <input type="text" placeholder="first_name" name="first_name">
+                                        <b class="tooltip tooltip-bottom-right"></b>
+                                    </label>
+                                </section>
+                            </dd>
+							<dt>Last Name</dt>
+                            <dd>
+                                <section>
+                                    <label class="input">
+                                        <i class="icon-append fa fa-user"></i>
+                                        <input type="text" placeholder="last_name" name="last_name">
+                                        <b class="tooltip tooltip-bottom-right"></b>
+                                    </label>
+                                </section>
+                            </dd>
+                            <dt>Email address</dt>
+                            <dd>
+                                <section>
+                                    <label class="input">
+                                        <i class="icon-append fa fa-envelope"></i>
+                                        <input type="email" placeholder="Email address" name="email">
+                                        <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
+                                    </label>
+                                </section>
+                            </dd>
+							<dt>Phone Number</dt>
+                            <dd>
+                                <section>
+                                    <label class="input">
+                                        <i class="icon-append fa fa-user"></i>
+                                        <input type="text" placeholder="phone_number" name="phone_number">
+                                        <b class="tooltip tooltip-bottom-right"></b>
+                                    </label>
+                                </section>
+                            </dd>
+							<dt>Birth Date</dt>
+                            <dd>
+                                <section>
+                                    <label class="input">
+                                        <i class="icon-append fa fa-user"></i>
+                                        <input type="text" placeholder="birth_date" name="birth_date">
+                                        <b class="tooltip tooltip-bottom-right"></b>
+                                    </label>
+                                </section>
+                            </dd>
+                            <dt>Enter your current password</dt>
+                            <dd>
+                                <section>
+                                    <label class="input">
+                                        <i class="icon-append fa fa-lock"></i>
+                                        <input type="password" id="password" name="password" placeholder="Password">
+                                        <b class="tooltip tooltip-bottom-right">Don't forget your password</b>
+                                    </label>
+                                </section>
+                            </dd>
+                            <dt>Enter your new password</dt>
+                            <dd>
+                                <section>
+                                    <label class="input">
+                                        <i class="icon-append fa fa-lock"></i>
+                                        <input type="password" name="passwordConfirm" placeholder="Confirm password">
+                                        <b class="tooltip tooltip-bottom-right">Don't forget your password</b>
+                                    </label>
+                                </section>
+                            </dd>
+							<dt>Confirm your new password</dt>
+                            <dd>
+                                <section>
+                                    <label class="input">
+                                        <i class="icon-append fa fa-user"></i>
+                                        <input type="text" placeholder="Username" name="username">
+                                        <b class="tooltip tooltip-bottom-right"></b>
+                                    </label>
+                                </section>
+                            </dd>
+                        </dl>
+                        <label class="toggle toggle-change"><input type="checkbox" checked=""
+                                                              name="checkbox-toggle-1"><i class="no-rounded"></i>Remember
+                            password</label>
+                        <br>
+                        
+                        <button type="button" class="btn-u btn-u-default">Cancel</button>
+                        <button class="btn-u" type="submit">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+</body>
+
+</html>
+
+
