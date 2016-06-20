@@ -14,7 +14,7 @@ class QuestionController
                 $params["type_question"],
                 $params["alternatives"]);
 
-            $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
+            $db = new DatabaseConnector("localhost", "training_center", "mysql", "", "root", "");
 
             $conn = $db->getConnection();
 
@@ -38,11 +38,11 @@ class QuestionController
         $params = $request->get_params();
         $crit = $this->generateCriteria($params);
 
-        $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
+        $db = new DatabaseConnector("localhost", "training_center", "mysql", "", "root", "");
 
         $conn = $db->getConnection();
 
-        $result = $conn->query("SELECT enunciation, type_question, alternatives FROM question WHERE " . $crit);
+        $result = $conn->query("SELECT enunciation FROM question WHERE " . $crit);
 
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -66,7 +66,7 @@ class QuestionController
 
         //$crit = $this->generateCriteriaUpdate($params);
 
-        $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
+        $db = new DatabaseConnector("localhost", "training_center", "mysql", "", "root", "");
 
         $conn = $db->getConnection();
 

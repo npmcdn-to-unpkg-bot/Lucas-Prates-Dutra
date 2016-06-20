@@ -20,7 +20,7 @@ class UserController
                 $params["birth_date"],
                 $params["passwd"]);
 
-            $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
+            $db = new DatabaseConnector("localhost", "training_center", "mysql", "", "root", "");
 
 
             $conn = $db->getConnection();
@@ -53,7 +53,7 @@ class UserController
 
         $crit = $this->generateCriteria($params);
 
-        $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
+        $db = new DatabaseConnector("localhost", "training_center", "mysql", "", "root", "");
 
         $conn = $db->getConnection();
 
@@ -64,19 +64,24 @@ class UserController
 
     private function generateCriteria($params)
     {
-        $criteria = "";
-        foreach ($params as $key => $value) {
-            $criteria = $criteria . $key . " LIKE '%" . $value . "%' OR ";
+        $criteria = "1";
+        if (!in_array(null, $params)) {
+            $criteria="";
+            foreach ($params as $key => $value) {
+                $criteria = $criteria . $key . " LIKE '%" . $value . "%' OR ";
+            }
+
+            return substr($criteria, 0, -4);
         }
 
-        return substr($criteria, 0, -4);
+        return $criteria;
     }
 
     public function update($request)
     {
         $params = $request->get_params();
 
-        $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
+        $db = new DatabaseConnector("localhost", "training_center", "mysql", "", "root", "");
 
         $conn = $db->getConnection();
 
@@ -91,7 +96,7 @@ class UserController
     {
         $params = $request->get_params();
 
-        $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
+        $db = new DatabaseConnector("localhost", "training_center", "mysql", "", "root", "");
 
         $conn = $db->getConnection();
 

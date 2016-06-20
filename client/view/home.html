@@ -1,32 +1,11 @@
 <div id="wrapper">
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a href="#">
-                    Training Center
-                </a>
-            </li>
-            <li>
-                <a href="#/my_account">My Account</a>
-            </li>
-            <li>
-                <a href="#/home">Certifieds</a>
-            </li>
-            <li>
-                <a href="about.html">About</a>
-            </li>
-        </ul>
-    </div>
-    <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <!-- Page Header -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Certifieds
-                    <small>Select the certification you wish to study</small>
+                <h1 class="page-header">Certificados
+                    <small>Escolha a certificação que deseja estudar hoje</small>
                 </h1>
             </div>
         </div>
@@ -39,10 +18,8 @@
                     
                 </a>
                 <h3>
-                    <a href="topic.html">
-                    <img src="{{certified.img}}">{{certified.tittle}}</a>
-                
-                    
+                    <a href="#/topic/{{certified.cod}}">
+                    {{certified.tittle}}</a>                
                     <p>{{certified.difficult}}
                 </h3>
                 <p>{{certified.description}}</p>

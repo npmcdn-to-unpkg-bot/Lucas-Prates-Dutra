@@ -1,0 +1,32 @@
+<div id="wrapper">
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+    	<div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Tópicos
+                    <small>Selecione a matéria que deseja estudar</small>
+                </h1>
+            </div>
+        </div>
+        <input type="text" class="form-control" ng-model="criterioDeBusca" placeholder="Qual tópico deseja estudar hoje?"/>
+            <div ng-repeat="topic in topics | filter:{tittle: criterioDeBusca}" class="row">
+                <div class="col-sm-3">
+                    <div class="well">
+                        <h3>{{topic.tittle}}</h3>
+                        <p>Número de Questões: {{topic.qtd_questions}}</p>
+                        <p>Ultima Pontuação: {{topic.last_score}}</p>
+                        <p>Melhor Pontuação: {{topic.best_score}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="well">
+                        <p>{{topic.info}}.</p>
+                    </div>
+    				<button><a href="#/question/{{topic.cod}}">Treinar</a></button>
+                </div>
+                </div>
+    </div>
+</div>
+<!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->

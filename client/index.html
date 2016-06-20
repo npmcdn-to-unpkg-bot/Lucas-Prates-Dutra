@@ -9,10 +9,9 @@
     <meta name="author" content="">
 
     <title>Training Center</title>
-    <link href="css/simple-sidebar.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/91afe29292.js"></script>
+    <link href="css/simple-sidebar.css" rel="stylesheet">
     <link href="css/myaccount.css" rel="stylesheet">
-
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <script src="angular/angular.js"></script>
@@ -21,12 +20,36 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers/certifiedCtrl.js"></script>
+    <script src="js/controllers/topicCtrl.js"></script>
+    <script src="js/controllers/questionCtrl.js"></script>
     <script src="js/config/routeConfig.js"></script>
+    <script src="js/value/configValue.js"></script>
+    <script src="js/services/certifiedAPIService.js"></script>
+    <script src="js/services/topicAPIService.js"></script>
+    <script src="js/services/questionAPIService.js"></script>
     
     
 </head>
 
 <body>
+<div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Training Center
+                </a>
+            </li>
+            <li>
+                <a href="#/my_account">My Account</a>
+            </li>
+            <li>
+                <a href="#/home">Certifieds</a>
+            </li>
+            <li>
+                <a href="about.html">About</a>
+            </li>
+        </ul>
+    </div>
 <div ng-view></div>
 </body>
 

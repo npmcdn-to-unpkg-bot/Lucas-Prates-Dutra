@@ -19,7 +19,7 @@ class TopicController
                 $params["last_score"],
                 $params["test_time"]);
 
-            $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
+            $db = new DatabaseConnector("localhost", "training_center", "mysql", "", "root", "");
 
             $conn = $db->getConnection();
 
@@ -47,11 +47,11 @@ class TopicController
         $params = $request->get_params();
         $crit = $this->generateCriteria($params);
 
-        $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
+        $db = new DatabaseConnector("localhost", "training_center", "mysql", "", "root", "");
 
         $conn = $db->getConnection();
 
-        $result = $conn->query("SELECT tittle, info, qtd_questions, best_score, last_score, test_time FROM topic WHERE " . $crit);
+        $result = $conn->query("SELECT cod, tittle, info, qtd_questions, best_score, last_score, test_time FROM topic WHERE " . $crit);
 
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -71,7 +71,7 @@ class TopicController
     {
         $params = $request->get_params();
 
-        $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
+        $db = new DatabaseConnector("localhost", "training_center", "mysql", "", "root", "");
 
         $conn = $db->getConnection();
 
@@ -87,7 +87,7 @@ class TopicController
         $params = $request->get_params();
 
 
-        $db = new DatabaseConnector("localhost", "projeto", "mysql", "", "root", "");
+        $db = new DatabaseConnector("localhost", "training_center", "mysql", "", "root", "");
 
         $conn = $db->getConnection();
 
