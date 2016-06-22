@@ -42,7 +42,16 @@ class QuestionController
 
         $conn = $db->getConnection();
 
-        $result = $conn->query("SELECT enunciation FROM question WHERE " . $crit);
+        $result = $conn->query("SELECT q.enunciation,
+                                (SELECT al.description FROM alternatives as al, question as q WHERE al.cod_question = q.cod AND al.cod = a.cod) as al1,
+                                (SELECT al.cod FROM alternatives as al, question as q WHERE al.cod_question = q.cod AND al.cod = a.cod) as cod_al1,
+                                (SELECT al.description FROM alternatives as al, question as q WHERE al.cod_question = q.cod AND al.cod = a.cod + 1) as al2,
+                                (SELECT al.cod FROM alternatives as al, question as q WHERE al.cod_question = q.cod AND al.cod = a.cod + 1) as cod_al2,
+                                (SELECT al.description FROM alternatives as al, question as q WHERE al.cod_question = q.cod AND al.cod = a.cod + 2) as al3,
+                                (SELECT al.cod FROM alternatives as al, question as q WHERE al.cod_question = q.cod AND al.cod = a.cod + 2) as cod_al3,
+                                (SELECT al.description FROM alternatives as al, question as q WHERE al.cod_question = q.cod AND al.cod = a.cod + 3) as al4,
+                                (SELECT al.cod FROM alternatives as al, question as q WHERE al.cod_question = q.cod AND al.cod = a.cod + 3) as cod_al4
+                                 FROM question as q, alternatives as a WHERE a.cod_question = q.cod AND " . $crit . " GROUP BY q.enunciation");
 
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -62,15 +71,10 @@ class QuestionController
     {
         $params = $request->get_params();
 
-        //var_dump($params);
-
-        //$crit = $this->generateCriteriaUpdate($params);
-
         $db = new DatabaseConnector("localhost", "training_center", "mysql", "", "root", "");
 
         $conn = $db->getConnection();
 
-        //Falha: o email não poderá ser trocado
         foreach ($params as $key => $value) {
             $result = $conn->query("UPDATE question SET " . $key . " = '" . $value . "' WHERE enunciation = '" . $params["enunciation"] . "'");
         }

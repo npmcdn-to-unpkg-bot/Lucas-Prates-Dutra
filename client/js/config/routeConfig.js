@@ -36,5 +36,18 @@ angular.module("trainingCenter").config(function ($routeProvider){
         }
     });
 
+    $routeProvider.when("/result", {
+        templateUrl: "view/result.html",
+        controller: "resultCtrl",  
+        resolve: {
+            result: function(resultsAPI) {
+                return resultsAPI.getResults();
+            },
+            answer: function(resultsAPI) {
+                return resultsAPI.getAnswer();
+            }
+        }
+    });
+
     $routeProvider.otherwise({redirectTo:"/home"})
 });

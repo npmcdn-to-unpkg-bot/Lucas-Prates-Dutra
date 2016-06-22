@@ -7,7 +7,4 @@ angular.module("trainingCenter").factory("topicsAPI", function($http, config){
 	return {
 		getTopic: _getTopic
 	};
-	
 })
-
-
